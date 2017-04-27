@@ -8,6 +8,12 @@
 
 #import <ScreenSaver/ScreenSaver.h>
 
-@interface sierpinski_saverView : ScreenSaverView
+@interface sierpinski_saverView : ScreenSaverView {
+    float iterations;
+    float triangleHeight;
+    
+    NSMutableArray *points;
+    NSDate *lastPointAdded;
+}
 
 @end
