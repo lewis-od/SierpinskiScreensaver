@@ -33,10 +33,13 @@
     
     // Add initial 3 points
     triangleHeight = centreY * 0.8;
-    NSValue *A = [NSValue valueWithPoint:NSMakePoint(centreX, centreY + triangleHeight)];
+    NSValue *A = [NSValue valueWithPoint:
+                  NSMakePoint(centreX, centreY + triangleHeight)];
+    
     NSValue *B = [NSValue valueWithPoint:
                   NSMakePoint(centreX - ((2*triangleHeight)/sqrt(3)), // sqrt(3)=tan(π/3)
                               centreY - triangleHeight)];
+    
     NSValue *C = [NSValue valueWithPoint:
                   NSMakePoint(centreX + ((2*triangleHeight)/sqrt(3)), // sqrt(3)=tan(π/3)
                               centreY - triangleHeight)];
@@ -59,7 +62,8 @@
     
     [[NSColor whiteColor] set];
     
-    NSString *numIterations = [NSString stringWithFormat:@"%i", (int)[points count]];
+    NSString *numIterations = [NSString stringWithFormat:@"%i",
+                               (int)[points count]];
     
     float centreX = NSMaxX(screenSize)/2;
     float centreY = NSMaxY(screenSize)/2;
@@ -77,9 +81,14 @@
 
 - (void)drawText:(NSString *)textString atPoint:(NSPoint)centre
 {
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:20], NSFontAttributeName, [NSColor whiteColor], NSForegroundColorAttributeName, nil];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [NSFont fontWithName:@"Helvetica" size:20],
+                                NSFontAttributeName, [NSColor whiteColor],
+                                NSForegroundColorAttributeName, nil];
     
-    NSAttributedString *label = [[NSAttributedString alloc] initWithString:textString attributes:attributes];
+    NSAttributedString *label = [[NSAttributedString alloc]
+                                 initWithString:textString
+                                     attributes:attributes];
     
     float textX = centre.x - label.size.width/2;
     float textY = centre.y - label.size.height/2;
@@ -89,7 +98,8 @@
 - (void)animateOneFrame
 {
     // Add a point if it's been more than 0.1 secs
-    if ([lastPointAdded timeIntervalSinceNow] < -0.01) {
+    if ([lastPointAdded timeIntervalSinceNow] < -0.01)
+    {
         NSPoint newPoint = [self createNewPoint];
         [points addObject:[NSValue valueWithPoint:newPoint]];
         lastPointAdded = [NSDate date];
@@ -118,7 +128,8 @@
     CGPoint towards = [points[pointNumber] pointValue];
     CGPoint last = [[points lastObject] pointValue];
     
-    if (towards.x == last.x && towards.y == last.y) {
+    if (towards.x == last.x && towards.y == last.y)
+    {
         return [self createNewPoint];
     }
     
