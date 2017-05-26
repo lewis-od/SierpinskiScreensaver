@@ -58,7 +58,7 @@
     [super drawRect:rect];
     
     NSRect screenSize = [self bounds];
-    float pointWidth = NSMaxY(screenSize) / 150;
+    float pointWidth = NSMaxY(screenSize) / 200;
     
     [[NSColor whiteColor] set];
     
